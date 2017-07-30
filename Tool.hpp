@@ -1,6 +1,10 @@
 /*********************************************************************
  ** Program name: Tool
+<<<<<<< HEAD
  ** Author:       Group 16
+=======
+ ** Author:       Craig Ricker
+>>>>>>> 45f27ade6f8f3ba7827a6abfc15bdaab10e9aeb2
  ** Date:         July 24th 2017
  ** Description:  Abstract class definition of a tool, each tool
  **               has a strength, type and the ability to update the 
@@ -17,6 +21,7 @@
  **               higher score.
  **
  *********************************************************************/
+
 
 #ifndef GROUP16_TOOL_HPP
 #define GROUP16_TOOL_HPP
@@ -74,6 +79,7 @@ class Tool
    {return LHS._strength == RHS._strength;};
    friend bool operator!=(const Tool& LHS, const Tool& RHS)
    { return !(LHS == RHS); };
+
    
    // Get tye type of tool
    char getType();
@@ -81,6 +87,8 @@ class Tool
    int getStrength();
    // Update strength
    void setStrength(int newStr);
+
 };
 
-#endif /* GROUP16_TOOL_HPP */
+#endif /* RICKERCR_TOOL_HPP */
+

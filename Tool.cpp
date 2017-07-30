@@ -102,3 +102,6 @@ void Tool::setStrength(int newStr)
 }
 
 
+
+// I'm not sure if this file is needed...we can transfer code over to it
+// or perhaps entirely delete it.
