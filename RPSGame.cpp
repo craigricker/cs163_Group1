@@ -21,6 +21,17 @@
 const char COMP_CHOICES[CHOICE_SIZE] = {PAPER, SCISSOR, ROCK};
 using namespace std;
 
+
+/*********************************************************************
+ ** Input:	None
+ **
+ ** Return: None
+ **
+ ** Description:  Default constructor using Tool constructor, sets
+ **               _strength to 1, and type to PAPER ('p')
+ **
+ **
+ *********************************************************************/
 void RPSGame::_printStatus()
 {
    cout << "Human wins: " << _plrAScore << endl;
@@ -28,6 +39,22 @@ void RPSGame::_printStatus()
    cout << "Ties: " << _ties << endl;
 }
 
+
+
+/*********************************************************************
+ ** Input:	playerChoice char - the type of Tool user selects
+ **
+ ** Return: None
+ **
+ ** Description:  Sets _plrA to the Tool type of input (playerChoice)
+ **               Sets _plrB(computer) to a random tool
+ **               Sends both to "fight" by using Tool::fight()
+ **               Decides winner based on logic of RPS
+ **               Based on who won, update score
+ **               Print out information on score, and number of ties
+ **
+ **
+ *********************************************************************/
 void RPSGame::_play(char playerChoice)
 {
    // Set playerA's tool
@@ -143,8 +170,21 @@ void RPSGame::_play(char playerChoice)
       exit(-1);
    }
    _printStatus();
+   delete _plrA;
+   delete _plrB;
 }
 
+
+/*********************************************************************
+ ** Input:	tool char - tool selection to be created
+ **
+ ** Return: Tool * - newly created tool
+ **
+ ** Description:  Takes a char, and based on the char, creates a tool
+ **               of that corresponding class
+ **
+ **
+ *********************************************************************/
 Tool * RPSGame::_createTool(char tool)
 {
    if (tool == SCISSOR)
@@ -165,6 +205,17 @@ Tool * RPSGame::_createTool(char tool)
    }
 }
 
+
+/*********************************************************************
+ ** Input:	None
+ **
+ ** Return: NA
+ **
+ ** Description:  Default constructor of RPSGame, sets all fields to 
+ **               zero for int, and nullptr for pointers.
+ **
+ **
+ *********************************************************************/
 RPSGame::RPSGame()
 {
    _plrB = nullptr;
@@ -173,4 +224,19 @@ RPSGame::RPSGame()
    _plrAScore = 0;
    _plrBScore = 0;
    
+}
+
+/*********************************************************************
+ ** Input:	None
+ **
+ ** Return: NA
+ **
+ ** Description:  Destructor, deletes pointers if they exist still
+ **
+ **
+ *********************************************************************/
+RPSGame::~RPSGame()
+{
+   delete _plrA;
+   delete _plrB;
 }
