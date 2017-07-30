@@ -27,6 +27,9 @@
 #define GROUP16_TOOL_HPP
 
 #include <stdio.h>
+#include <iostream>
+
+using namespace std;
 
 
 
@@ -79,6 +82,8 @@ class Tool
    {return LHS._strength == RHS._strength;};
    friend bool operator!=(const Tool& LHS, const Tool& RHS)
    { return !(LHS == RHS); };
+   
+   friend ostream & operator <<(ostream& os, const Tool& actTool);
 
    
    // Get tye type of tool
@@ -87,6 +92,7 @@ class Tool
    int getStrength();
    // Update strength
    void setStrength(int newStr);
+   static void fight(Tool & plrA, Tool & plrB);
 
 };
 
