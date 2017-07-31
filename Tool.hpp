@@ -1,10 +1,6 @@
 /*********************************************************************
  ** Program name: Tool
-<<<<<<< HEAD
  ** Author:       Group 16
-=======
- ** Author:       Craig Ricker
->>>>>>> 45f27ade6f8f3ba7827a6abfc15bdaab10e9aeb2
  ** Date:         July 24th 2017
  ** Description:  Abstract class definition of a tool, each tool
  **               has a strength, type and the ability to update the 
@@ -56,6 +52,7 @@ using namespace std;
  ** getType() - getter for type
  ** getStrength() - getter for strength
  ** setStrength() - setter for stregnth
+ ** fight()       - decides who wins
  *********************************************************************/
 class Tool
 {
@@ -66,23 +63,7 @@ class Tool
    public:
    Tool(int str, char type);
    Tool();
-   // Update strength to new value
-   friend bool operator<(const Tool& LHS, const Tool& RHS)
-   {
-      return LHS._strength < RHS._strength;
-   };
-   friend bool operator> (const Tool& LHS, const Tool& RHS)
-   { return RHS < LHS; };
-   friend bool operator<=(const Tool& LHS, const Tool& RHS)
-   { return !(LHS > RHS); };
-   friend bool operator>=(const Tool& LHS, const Tool& RHS)
-   { return !(LHS < RHS); };
-   
-   friend bool operator==(const Tool& LHS, const Tool& RHS)
-   {return LHS._strength == RHS._strength;};
-   friend bool operator!=(const Tool& LHS, const Tool& RHS)
-   { return !(LHS == RHS); };
-   
+
    friend ostream & operator <<(ostream& os, const Tool& actTool);
 
    
@@ -92,7 +73,8 @@ class Tool
    int getStrength();
    // Update strength
    void setStrength(int newStr);
-   static void fight(Tool & plrA, Tool & plrB);
+   static Tool * fight(Tool * plrA, Tool * plrB);
+   
 
 };
 

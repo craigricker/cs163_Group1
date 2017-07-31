@@ -103,63 +103,66 @@ void Tool::setStrength(int newStr)
 
 
 /*********************************************************************
- ** Input:	plrA Tool & - reference to a tool to compare str
- **         plrB Tool B - reference to a tool to compare str
+ ** Input:	plrA Tool  *- pointer to a tool to compare str
+ **         plrB Tool * - pointer to a tool to compare str
  **
- ** Return: None - function doesn't really do anything according to 
- **            assignment rules
+ ** Return: Tool *   - who won
  **
  ** Description:  Uses the logic as dictated by the group 1 assignment
  **               Rock doubles vs scissor, halved vs paper etc
- **               However, it doesn't actually update the strength of
- **               each tool...
- **               In addition, this logic is not used to decide which
+ **               In addition, this logic is used to decide which
  **               player wins the game, as based on Piazza feedback
  **
  *********************************************************************/
-void Tool::fight(Tool & plrA, Tool & plrB)
+Tool * Tool::fight(Tool * plrA, Tool * plrB)
 {
-   int newStr;
-   if (plrA.getType() == ROCK)
+   
+   if (plrA->getType() == ROCK)
    {
-      if (plrB.getType() == PAPER)
+      if (plrB->getType() == PAPER)
       {
-         // Double plrA strength...but odn't update..
-         // Set to newStr to squelch warning
-         newStr = plrA.getStrength() / 2;
+         plrA->setStrength(plrA->getStrength() / 2);
       }
-      else if (plrB.getType() == SCISSOR)
+      else if (plrB->getType() == SCISSOR)
       {
-         newStr = plrA.getStrength() * 2;
+         plrA->setStrength(plrA->getStrength() * 2);
       }
    }
-   else if (plrA.getType() == PAPER)
+   else if (plrA->getType() == PAPER)
    {
-      if (plrB.getType() == SCISSOR)
+      if (plrB->getType() == SCISSOR)
       {
-         // Double plrA strength...but odn't update..
-         // Set to newStr to squelch warning
-         newStr = plrA.getStrength() / 2;
+         plrA->setStrength(plrA->getStrength() / 2);
       }
-      else if (plrB.getType() == ROCK)
+      else if (plrB->getType() == ROCK)
       {
-         newStr = plrA.getStrength() * 2;
+         plrA->setStrength(plrA->getStrength() * 2);
       }
    }
-   else if (plrA.getType() == SCISSOR)
+   else if (plrA->getType() == SCISSOR)
    {
-      if (plrB.getType() == ROCK)
+      if (plrB->getType() == ROCK)
       {
-         // Double plrA strength...but odn't update..
-         // Set to newStr to squelch warning
-         newStr = plrA.getStrength() / 2;
+         plrA->setStrength(plrA->getStrength() / 2);
       }
-      else if (plrB.getType() == PAPER)
+      else if (plrB->getType() == PAPER)
       {
-         newStr = plrA.getStrength() * 2;
+         plrA->setStrength(plrA->getStrength() * 2);
       }
    }
-   return;
+   
+   // Decide who is winner
+   if (plrA->getStrength() > plrB->getStrength())
+   {
+      return plrA;
+   }
+   else if(plrB->getStrength() > plrA->getStrength())
+   {
+      return plrB;
+   }
+   else{
+      return nullptr;
+   }
 }
 
 /*********************************************************************

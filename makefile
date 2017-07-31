@@ -20,7 +20,7 @@ $(CXX) = g++
 #
 # Source Files
 #
-SRC  = GroupProject1.cpp
+SRC  = play_game.cpp
 SRC += Paper.cpp
 SRC += menu2.cpp
 SRC += Rock.cpp

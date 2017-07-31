@@ -57,6 +57,7 @@ void RPSGame::_printStatus()
  *********************************************************************/
 void RPSGame::_play(char playerChoice)
 {
+
    // Set playerA's tool
    _plrA = _createTool(playerChoice);
    // Randomize computer selection
@@ -70,82 +71,11 @@ void RPSGame::_play(char playerChoice)
    // This MAY need to be changed to drive the logic of the entire
    // game, I saw a piazza post that said it shouldn't rely on str...
    // but who knows.
-   Tool::fight(*_plrA, *_plrB);
+
    
-   Tool * winner;
-   // Cases where player A throws rock
-   if (_plrA->getType() == ROCK)
-   {
-      // If paper, plrB wins
-      if (_plrB->getType() == PAPER)
-      {
-         winner = _plrB;
-      }
-      // If scissor, rock wins
-      else if (_plrB->getType() == SCISSOR)
-      {
-         winner = _plrA;
-      }
-      // If rock, tie
-      else if (_plrB->getType() == ROCK)
-      {
-         winner = nullptr;
-      }
-      else{
-         // Illegal state, just exit
-         exit(-1);
-      }
-   }
-   // Case where player a throws paper
-   else if (_plrA->getType() == PAPER)
-   {
-      // If paper, tie
-      if (_plrB->getType() == PAPER)
-      {
-         winner = nullptr;
-      }
-      // If scissor, scissor wins
-      else if (_plrB->getType() == SCISSOR)
-      {
-         winner = _plrB;
-      }
-      // If rock, rock loses
-      else if (_plrB->getType() == ROCK)
-      {
-         winner = _plrA;
-      }
-      else{
-         // Illegal state, just exit
-         exit(-1);
-      }
-   }
-   // Case where player a throws scissor
-   else if (_plrA->getType() == SCISSOR)
-   {
-      // If paper, scissor wins
-      if (_plrB->getType() == PAPER)
-      {
-         winner = _plrA;
-      }
-      // If scissor, tie
-      else if (_plrB->getType() == SCISSOR)
-      {
-         winner = nullptr;
-      }
-      // If rock, rock wins
-      else if (_plrB->getType() == ROCK)
-      {
-         winner = _plrB;
-      }
-      else{
-         // Illegal state, just exit
-         exit(-1);
-      }
-   }
-   // Illegal state, throw errow and exit
-   else{
-      exit(-1);
-   }
+   Tool * winner = nullptr;
+   winner =Tool::fight(_plrA, _plrB);
+   
    cout << "You selected: " << (*_plrA) << endl;
    cout << "Computer selected: " << (*_plrB) << endl;
    // Winner is decided, now update score of winner
