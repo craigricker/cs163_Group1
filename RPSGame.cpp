@@ -167,6 +167,13 @@ RPSGame::RPSGame()
  *********************************************************************/
 RPSGame::~RPSGame()
 {
-   delete _plrA;
-   delete _plrB;
+   if (_plrA != nullptr)
+   {
+      delete _plrA;
+   }
+   if (_plrB != nullptr)
+   {
+      delete _plrB;
+
+   }
 }
