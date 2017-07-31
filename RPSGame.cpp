@@ -100,8 +100,6 @@ void RPSGame::_play(char playerChoice)
       exit(-1);
    }
    _printStatus();
-   delete _plrA;
-   delete _plrB;
 }
 
 
